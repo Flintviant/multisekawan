@@ -1,9 +1,9 @@
 <?php
   
   $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $databasename = "newsportal";
+  $username = "u752324154_sekaone";
+  $password = "1234Harusdigunakan!";
+  $databasename = "u752324154_sekaone";
 
   $defaulturl  = "https://multisekawan.com/";
   
