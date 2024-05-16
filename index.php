@@ -53,7 +53,7 @@
 		</div>
 
 		<div class="container-fluid text-center p-0 d-none d-lg-block">
-	    	<img src="assets/gambardipagehome.jpg" style="max-width:100%;" alt="gambar rotan banyak">
+	    	<img src="assets/gambardihome.jpg" style="max-width:100%;" alt="gambar rotan banyak">
 	    </div>
 
 	    <div class="container-fluid text-center p-0 d-block d-lg-none">

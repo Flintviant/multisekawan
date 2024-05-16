@@ -1017,3 +1017,87 @@ textarea {
     width: 60px; /* Adjust the size as needed */
     height: auto;
 }
+
+@media screen and (max-width: 360px){
+  .slide-mobile {
+    width: 100%; /* Ubah dari fixed width ke persentase untuk responsivitas lebih baik */
+    min-width: 360px;
+    max-width: 360px; /* Berikan batas maksimum */
+    cursor: pointer;
+    color: #fff;
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+/* Mobile devices (max-width: 375px) */
+@media screen and (max-width: 375px) and (min-width: 361px) {
+  .slide-mobile {
+    width: 100%; /* Ubah dari fixed width ke persentase untuk responsivitas lebih baik */
+    max-width: 375px; /* Berikan batas maksimum */
+    cursor: pointer;
+    color: #fff;
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+/* Mobile devices (max-width: 430px) */
+@media screen and (max-width: 430px) and (min-width: 376px) {
+  .slide-mobile {
+    width: 100%; /* Ubah dari fixed width ke persentase untuk responsivitas lebih baik */
+    max-width: 414px; /* Berikan batas maksimum */
+    min-width: 414px;
+    cursor: pointer;
+    color: #fff;
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .slide-mobile {
+    width: 100%; /* Ubah dari fixed width ke persentase untuk responsivitas lebih baik */
+    max-width: 600px; /* Berikan batas maksimum */
+    min-width: 600px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #fff;
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+/* Larger devices (min-width: 820px) */
+@media screen and (min-width: 820px) {
+  .slide-mobile {
+    width: 100%; /* Ubah dari fixed width ke persentase untuk responsivitas lebih baik */
+    max-width: 720px; /* Berikan batas maksimum */
+    cursor: pointer;
+    color: #fff;
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+  }
+}

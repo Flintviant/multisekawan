@@ -22,11 +22,11 @@
     </div>
 </div>
 
-<div id="mobile-section" class="p-0 d-block d-lg-none"> 
-    <div id="carousel-mobile" class="carousel slide" data-bs-ride="carousel">
+
+    <div id="carousel-mobile" class="carousel slide p-0 d-block d-lg-none" data-bs-ride="carousel">
         <div class="carousel-inner parent-container-img">
             <div class="carousel-item active">
-                    <div class="slide" style="background-image: url('assets/mobile/sampulpotrait1.jpg');">
+                    <div class="slide slide-mobile" style="background-image: url('assets/mobile/sampulpotrait1.jpg');">
                     </div>
             </div>
             <div class="carousel-item">
@@ -43,4 +43,3 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-</div>
