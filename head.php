@@ -5,7 +5,7 @@
   <link rel="shortcut icon" href="assets/logotanpateks.webp">
 
   <meta name="description" content="" />
-  <meta name="keywords" content="bootstrap, bootstrap4" />
+  <meta name="keywords" content="Rattan Webbing, Open Rattan Webbing" />
 
 		<!-- Bootstrap CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -23,6 +23,7 @@
         if(isset($_GET["home"])){ echo "Sekaone - Home";}
         else if(isset($_GET["about"])){ echo "Sekaone - About Us";}
         else if(isset($_GET["services"])){ echo "Sekaone - Services";}
+        else if(isset($_GET["artikel"])){ echo "Sekaone - Artikel";}
         else if(isset($_GET["contact"])){ echo "Sekaone - Contact Us";}
         else { echo "Home"; }
     	?>

@@ -61,20 +61,24 @@ while ($row=mysqli_fetch_array($query)) {
 ?>
 
           <div class="card mb-4">
- <img class="card-img-top" src="admin/postimages/<?php echo htmlentities($row['PostImage']);?>" alt="<?php echo htmlentities($row['posttitle']);?>">
-            <div class="card-body">
-              <h2 class="card-title"><?php echo htmlentities($row['posttitle']);?></h2>
-                 <p><!--category-->
- <a class="badge bg-secondary text-decoration-none link-light" href="category.php?catid=<?php echo htmlentities($row['cid'])?>" style="color:#fff"><?php echo htmlentities($row['category']);?></a>
-<!--Subcategory--->
-  <a class="badge bg-secondary text-decoration-none link-light"  style="color:#fff"><?php echo htmlentities($row['subcategory']);?></a></p>
-       
-              <a href="news-details.php?nid=<?php echo htmlentities($row['pid'])?>" class="btn btn-primary">Read More &rarr;</a>
-            </div>
-            <!-- <div class="card-footer text-muted">
-              Posted on <?php echo htmlentities($row['postingdate']);?>
-           
-            </div> -->
+             <img class="card-img-top" src="admin/postimages/<?php echo htmlentities($row['PostImage']);?>" alt="<?php echo htmlentities($row['posttitle']);?>">
+              <div class="card-body">
+                  <h2 class="card-title"><?php echo htmlentities($row['posttitle']);?></h2>
+                      <p><!--category-->
+                        <a class="badge bg-secondary text-decoration-none link-light" href="category.php?catid=<?php echo htmlentities($row['cid'])?>" style="color:#fff"><?php echo htmlentities($row['category']);?>
+                        </a>
+                        <!--Subcategory--->
+                        <a class="badge bg-secondary text-decoration-none link-light"  style="color:#fff"><?php echo htmlentities($row['subcategory']);?>
+                        </a>
+                      </p>
+                     
+                      <a href="news-details.php?nid=<?php echo htmlentities($row['pid'])?>" class="btn btn-primary">  Read More &rarr;
+                      </a>
+              </div>
+              <!-- <div class="card-footer text-muted">
+                Posted on <?php echo htmlentities($row['postingdate']);?>
+             
+              </div> -->
           </div>
 <?php } ?>
        

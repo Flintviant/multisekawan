@@ -116,9 +116,9 @@ while ($row=mysqli_fetch_array($query)) {
 
  <img class="img-fluid rounded" src="admin/postimages/<?php echo htmlentities($row['PostImage']);?>" alt="<?php echo htmlentities($row['posttitle']);?>">
   
-              <p class="card-text"><?php 
-$pt=$row['postdetails'];
-              echo  (substr($pt,0));?></p>
+              <p class="card-text">
+                <?php $pt=$row['postdetails']; echo (substr($pt,0));?>  
+              </p>
              
             </div>
             <div class="card-footer text-muted">

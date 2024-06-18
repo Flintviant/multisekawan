@@ -1,6 +1,8 @@
 <!-- Start Header/Navigation -->
 	<nav class="custom-navbar navbar navbar navbar-expand-md bg-white container-fluid" arial-label="Furni navigation bar">
-			<img class="navbar-brand" href="index.php" height="80" src="assets/logoteks.webp"></img>
+
+		<div class="container-fluid">
+			<img class="navbar-brand" href="index.php" width="170" height="80" src="assets/logoteks.webp"></img>
 
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="fa fa-list" style="font-size:24px;"></span>
@@ -15,7 +17,7 @@
 					<!--<li class="active"><a class="nav-link" href="blog.php">Blog</a></li>-->
 					<li class="nav-item"><a class="nav-link" href="about.php?about">About us</a></li>
 					<li class="nav-item"><a class="nav-link" href="services.php?services">Product</a></li>
-					<li class="nav-item"><a class="nav-link" href="newsportal">Blog</a></li>
+					<li class="nav-item"><a class="nav-link" href="artikel.php?artikel">Blog</a></li>
 					<li class="nav-item"><a class="nav-link" href="contact.php?contact">Contact us</a></li>
 				</ul>
 
@@ -24,7 +26,7 @@
 					<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
 				</ul>-->
 			</div>
-			
+		</div>	
 	</nav>
 
 <!-- End Header/Navigation -->

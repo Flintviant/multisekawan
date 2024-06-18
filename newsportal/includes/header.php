@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" style="color:seagreen;" href="index.php">Home</a>
+              <a class="nav-link" style="color:seagreen;" href="<?=$defaulturl?>">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" style="color:seagreen;" href="index.php">News</a>
