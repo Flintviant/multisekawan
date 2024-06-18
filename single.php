@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$conn = new mysqli("localhost", "root", "", "newsportal");
+$conn = new mysqli("localhost", "u752324154_sekaone", "1234Harusdigunakan!", "u752324154_sekaone");
 //Genrating CSRF Token
 if (empty($_SESSION['token'])) {
  $_SESSION['token'] = bin2hex(random_bytes(32));
