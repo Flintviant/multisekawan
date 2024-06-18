@@ -11,22 +11,22 @@ if(isset($_POST['submit']))
   //Verifying CSRF Token
 if (!empty($_POST['csrftoken'])) {
     if (hash_equals($_SESSION['token'], $_POST['csrftoken'])) {
-$name=$_POST['name'];
-$email=$_POST['email'];
-$comment=$_POST['comment'];
-$postid=intval($_GET['nid']);
-$st1='0';
-$query=mysqli_query($conn,"insert into tblcomments(postId,name,email,comment,status) values('$postid','$name','$email','$comment','$st1')");
-if($query):
-  echo "<script>alert('comment successfully submit. Comment will be display after admin review ');</script>";
-  unset($_SESSION['token']);
-else :
- echo "<script>alert('Something went wrong. Please try again.');</script>";  
+        $name=$_POST['name'];
+        $email=$_POST['email'];
+        $comment=$_POST['comment'];
+        $postid=intval($_GET['nid']);
+        $st1='0';
+        $query=mysqli_query($conn,"insert into tblcomments(postId,name,email,comment,status) values('$postid','$name','$email','$comment','$st1')");
+        if($query):
+          echo "<script>alert('comment successfully submit. Comment will be display after admin review ');</script>";
+          unset($_SESSION['token']);
+        else :
+         echo "<script>alert('Something went wrong. Please try again.');</script>";  
 
-endif;
+        endif;
 
-}
-}
+    }
+  }
 }
 $postid=intval($_GET['nid']);
 
@@ -151,7 +151,7 @@ $postid=intval($_GET['nid']);
 
     <?php
     $pid=intval($_GET['nid']);
-    $currenturl="http://".$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];;
+    $currenturl="https://".$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];;
      $query=mysqli_query($conn,"SELECT tblposts.PostTitle as posttitle,tblposts.PostImage,tblcategory.CategoryName as category,tblcategory.id as cid,tblsubcategory.Subcategory as subcategory,tblposts.PostDetails as postdetails,tblposts.PostingDate as postingdate,tblposts.PostUrl as url,tblposts.postedBy,tblposts.lastUpdatedBy,tblposts.UpdationDate from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on  tblsubcategory.SubCategoryId=tblposts.SubCategoryId where tblposts.id='$pid'");
     while ($row=mysqli_fetch_array($query)) {
     ?>
