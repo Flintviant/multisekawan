@@ -74,9 +74,6 @@ $postid=intval($_GET['nid']);
   <link rel="stylesheet" href="css/artikel/glightbox.min.css">
   <link rel="stylesheet" href="css/artikel/style.css">
 
-  <!-- Tagify -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify@4.15.2/dist/tagify.css">
-
   <link rel="stylesheet" href="css/artikel/flatpickr.min.css">
 
 
