@@ -136,7 +136,7 @@ include('config.php');
 	            $offset = ($pageno - 1) * $no_of_records_per_page;
 
 	            // Database connection
-	            $conn = new mysqli("localhost", "root", "", "newsportal");
+	            $conn = new mysqli("localhost", "u752324154_sekaone", "1234Harusdigunakan!", "u752324154_sekaone");
 
 	            // Check connection
 	            if ($conn->connect_error) {
