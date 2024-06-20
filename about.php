@@ -18,7 +18,7 @@
 
 		<!-- Start Team Section -->
 		
-		<div class="untree_co-section">
+		
 			<div class="container-fluid">
 
 				<div class="container-fluid row">
@@ -261,7 +261,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		
 		
 		<!-- End Team Section -->
 		
