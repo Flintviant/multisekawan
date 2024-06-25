@@ -137,10 +137,10 @@ if (strlen($_SESSION['login']) == 0) {
                                             </select> 
                                         </div>
 
-                                        <div class="form-group m-b-20">
+                                        <!-- <div class="form-group m-b-20">
                                             <label for="exampleTags">Tags</label>
                                             <input value="<?php echo htmlentities($row['tags']); ?>" class="form-control tagify" name="tags" id="tags" required></input>
-                                        </div>
+                                        </div> -->
 
                                         <div class="row">
                                             <div class="col-sm-12">
