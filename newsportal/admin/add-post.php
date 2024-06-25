@@ -36,6 +36,7 @@ if (strlen($_SESSION['login']) == 0) {
         }
     }
 }
+
 ?>
 
 <!DOCTYPE html>
