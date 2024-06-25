@@ -3,11 +3,11 @@ session_start();
 include('includes/config.php');
 error_reporting(0);
 
-if(strlen($_SESSION['login']) == 0) { 
+if (strlen($_SESSION['login']) == 0) { 
     header('location:index.php');
 } else {
     // For adding post  
-    if(isset($_POST['submit'])) {
+    if (isset($_POST['submit'])) {
         $posttitle = $_POST['posttitle'];
         $catid = $_POST['category'];
         $subcatid = $_POST['subcategory'];
@@ -20,16 +20,16 @@ if(strlen($_SESSION['login']) == 0) {
         $extension = substr($imgfile, strlen($imgfile) - 4, strlen($imgfile));
         $allowed_extensions = array(".jpg", "jpeg", ".png", ".gif", "webp");
 
-        if(!in_array($extension, $allowed_extensions)) {
-            echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
+        if (!in_array($extension, $allowed_extensions)) {
+            echo "<script>alert('Invalid format. Only jpg / jpeg / png / gif / webp format allowed');</script>";
         } else {
             $imgnewfile = md5($imgfile) . $extension;
             move_uploaded_file($_FILES["postimage"]["tmp_name"], "postimages/" . $imgnewfile);
             $status = 1;
             $query = mysqli_query($con, "INSERT INTO tblposts(PostTitle, CategoryId, SubCategoryId, tags, PostDetails, PostUrl, Is_Active, PostImage, postedBy) VALUES('$posttitle', '$catid', '$subcatid', '$tagsid', '$postdetails', '$url', '$status', '$imgnewfile', '$postedby')");
             
-            if($query) {
-                $msg = "Post successfully added ";
+            if ($query) {
+                $msg = "Post successfully added";
             } else {
                 $error = "Something went wrong. Please try again.";    
             } 
@@ -86,10 +86,10 @@ if(strlen($_SESSION['login']) == 0) {
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="page-title-box">
-                                <h4 class="page-title">Add Post </h4>
+                                <h4 class="page-title">Add Post</h4>
                                 <ol class="breadcrumb p-0 m-0">
                                     <li><a href="#">Post</a></li>
-                                    <li><a href="#">Add Post </a></li>
+                                    <li><a href="#">Add Post</a></li>
                                     <li class="active">Add Post</li>
                                 </ol>
                                 <div class="clearfix"></div>
@@ -98,14 +98,14 @@ if(strlen($_SESSION['login']) == 0) {
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <?php if($msg){ ?>
+                            <?php if (isset($msg)) { ?>
                                 <div class="alert alert-success" role="alert">
-                                    <strong>Well done!</strong> <?php echo htmlentities($msg);?>
+                                    <strong>Well done!</strong> <?php echo htmlentities($msg); ?>
                                 </div>
                             <?php } ?>
-                            <?php if($error){ ?>
+                            <?php if (isset($error)) { ?>
                                 <div class="alert alert-danger" role="alert">
-                                    <strong>Oh snap!</strong> <?php echo htmlentities($error);?></div>
+                                    <strong>Oh snap!</strong> <?php echo htmlentities($error); ?></div>
                             <?php } ?>
                         </div>
                     </div>
@@ -121,12 +121,12 @@ if(strlen($_SESSION['login']) == 0) {
                                         <div class="form-group m-b-20">
                                             <label for="exampleInputEmail1">Category</label>
                                             <select class="form-control" name="category" id="category" onChange="getSubCat(this.value);" required>
-                                                <option value="">Select Category </option>
+                                                <option value="">Select Category</option>
                                                 <?php
                                                 $ret = mysqli_query($con, "SELECT id, CategoryName FROM tblcategory WHERE Is_Active=1");
-                                                while($result = mysqli_fetch_array($ret)) {    
+                                                while ($result = mysqli_fetch_array($ret)) {    
                                                 ?>
-                                                    <option value="<?php echo htmlentities($result['id']);?>"><?php echo htmlentities($result['CategoryName']);?></option>
+                                                    <option value="<?php echo htmlentities($result['id']); ?>"><?php echo htmlentities($result['CategoryName']); ?></option>
                                                 <?php } ?>
                                             </select> 
                                         </div>
@@ -163,7 +163,7 @@ if(strlen($_SESSION['login']) == 0) {
                     </div>
                 </div>
             </div>
-            <?php include('includes/footer.php');?>
+            <?php include('includes/footer.php'); ?>
         </div>
     </div>
     <script>
@@ -204,8 +204,6 @@ if(strlen($_SESSION['login']) == 0) {
             });
         });
     </script>
-    <script src="../plugins/switchery/switchery.min.js"></script>
-    <script src="../plugins/summernote/summernote.min.js"></script>
 </body>
 </html>
 <?php  ?>
