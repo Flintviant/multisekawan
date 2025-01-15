@@ -13,7 +13,7 @@
 
   <meta property="og:title" content="<?= $page_name ?? '' ?> | Sekawan">
   <meta property="og:site_name" content="Sekawan Official Store">
-  <meta property="og:url" content="<?php echo current_url() ?>">
+  <meta property="og:url" content="<?= $defaulturl ?>">
   <meta property="og:description" content="<?= mb_strimwidth($meta_description ?? '', 0, 159, '') ?>">
   <meta property="og:type" content="website">
   <meta property="og:image" content="<?= base_url('assets/logotanpateks.webp') ?>">
