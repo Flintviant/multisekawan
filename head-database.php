@@ -1,9 +1,9 @@
 <?php
 // Menyambung ke database (sesuaikan dengan pengaturan database Anda)
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "angcanglie"; // Ganti dengan nama database Anda
+$username = "u752324154_sekaone";
+$password = "1234Harusdigunakan!";
+$dbname = "u752324154_sekaone"; // Ganti dengan nama database Anda
 
 // Buat koneksi
 $conn = new mysqli($servername, $username, $password, $dbname);
