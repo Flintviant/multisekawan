@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$conn = new mysqli("localhost", "u752324154_sekaone", "1234Harusdigunakan!", "u752324154_sekaone");
+$conn = new mysqli("localhost", "u608883328_sekaone", "Sekaone_0423", "u608883328_sekaone");
 //Genrating CSRF Token
 if (empty($_SESSION['token'])) {
  $_SESSION['token'] = bin2hex(random_bytes(32));
