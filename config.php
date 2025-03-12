@@ -5,7 +5,7 @@
   $password = "Sekaone_0423";
   $databasename = "u608883328_sekaone";
 
-  $defaulturl  = "http://sekaone.test/";
+  $defaulturl  = "https://sekaone.com/";
   
   // CREATE CONNECTION
   $conn = new mysqli($servername,
