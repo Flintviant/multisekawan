@@ -1,13 +1,11 @@
-
-
 <?php
   
   $servername = "localhost";
-  $username = "u752324154_sekaone";
-  $password = "1234Harusdigunakan!";
-  $databasename = "u752324154_sekaone";
+  $username = "u608883328_sekaone";
+  $password = "Sekaone_0423";
+  $databasename = "u608883328_sekaone";
 
-  $defaulturl  = "https://multisekawan.com/";
+  $defaulturl  = "http://sekaone.test/";
   
   // CREATE CONNECTION
   $conn = new mysqli($servername,
