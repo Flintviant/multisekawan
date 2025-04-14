@@ -48,12 +48,13 @@
     }
   </style>
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7ZCTV7ECH"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DBYWGQGPP"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-P7ZCTV7ECH');
+
+    gtag('config', 'G-8DBYWGQGPP');
   </script>
 </head>
