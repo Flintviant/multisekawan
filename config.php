@@ -11,9 +11,11 @@
   $conn = new mysqli($servername,
     $username, $password, $databasename);
   
-  // GET CONNECTION ERRORS
-  if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
+  try {
+      $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $pass);
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  } catch (PDOException $e) {
+      die("Koneksi gagal: " . $e->getMessage());
   }
   
   // SQL QUERY

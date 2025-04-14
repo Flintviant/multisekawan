@@ -17,7 +17,7 @@
   </title>
 
   <meta name="description" content="<?= htmlspecialchars($meta_description ?? 'Multisekawan Official Website') ?>" />
-  <meta name="keywords" content="<?= htmlspecialchars($meta_keywords ?? 'multisekawan, sekaone, store') ?>" />
+  <meta name="keywords" content="<?= htmlspecialchars($meta_keywords ?? 'multisekawan, sekaone, store, rattan webbing') ?>" />
   <meta name="author" content="admin multisekawan">
   <link rel="shortcut icon" href="assets/logotanpateks.webp">
 

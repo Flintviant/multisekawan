@@ -18,6 +18,10 @@
 
 		<?php include 'hero.php'; ?>
 
+		<div class="visually-hidden">
+			<h1>Rattan Webbing PT Multi Sekawan Internasional, Rattan Cane Webbing</h1>
+		</div>
+
 		<div class="container-fluid mt-3 mb-5">
 		  <h2 style="color: #826f5f;">RATTAN CANE WEBBING</h2>
 		   <section class="customer-logos slider">
