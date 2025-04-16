@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://sekaone.com/sitemap-18032501.xml
+Sitemap: https://sekaone.com/sitemap-16042501.xml
