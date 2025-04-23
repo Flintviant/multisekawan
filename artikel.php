@@ -115,7 +115,7 @@ include('config.php');
 	            while ($row = $result->fetch_assoc()) {
 	                ?>
 	                <div class="col-md-4 mb-4">
-	                    <a href="newsportal/news-details.php?nid=<?php echo intval($row['pid']); ?>" class="h-entry v-height gradient">
+	                    <a href="single.php?nid=<?php echo intval($row['pid']); ?>" class="h-entry v-height gradient">
 	                        <div class="featured-img" style="background-image: url('newsportal/admin/postimages/<?php echo htmlentities($row['PostImage']); ?>');"></div>
 	                        <div class="text">
 	                            <span class="date"><?php echo htmlentities(date('M. d, Y', strtotime($row['postingdate']))); ?></span>
