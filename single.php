@@ -1,52 +1,62 @@
 <?php 
 session_start();
+
+// Database connection
 $conn = new mysqli("localhost", "u608883328_sekaone", "Sekaone_0423", "u608883328_sekaone");
-//Genrating CSRF Token
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Generate CSRF Token
 if (empty($_SESSION['token'])) {
- $_SESSION['token'] = bin2hex(random_bytes(32));
+    $_SESSION['token'] = bin2hex(random_bytes(32));
 }
 
-if(isset($_POST['submit']))
-{
-  //Verifying CSRF Token
-if (!empty($_POST['csrftoken'])) {
-    if (hash_equals($_SESSION['token'], $_POST['csrftoken'])) {
-        $name=$_POST['name'];
-        $email=$_POST['email'];
-        $comment=$_POST['comment'];
-        $postid=intval($_GET['nid']);
-        $st1='0';
-        $query=mysqli_query($conn,"insert into tblcomments(postId,name,email,comment,status) values('$postid','$name','$email','$comment','$st1')");
-        if($query):
-          echo "<script>alert('comment successfully submit. Comment will be display after admin review ');</script>";
-          unset($_SESSION['token']);
-        else :
-         echo "<script>alert('Something went wrong. Please try again.');</script>";  
+// Handle Comment Submission
+if (isset($_POST['submit'])) {
+    if (!empty($_POST['csrftoken']) && hash_equals($_SESSION['token'], $_POST['csrftoken'])) {
+        $name = $conn->real_escape_string(trim($_POST['name']));
+        $email = $conn->real_escape_string(trim($_POST['email']));
+        $comment = $conn->real_escape_string(trim($_POST['comment']));
+        $postid = intval($_GET['nid']);
+        $st1 = 0;
 
-        endif;
+        $stmt = $conn->prepare("INSERT INTO tblcomments (postId, name, email, comment, status) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("isssi", $postid, $name, $email, $comment, $st1);
 
-    }
-  }
-}
-$postid=intval($_GET['nid']);
-
-    $sql = "SELECT viewCounter FROM tblposts WHERE id = '$postid'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $visits = $row["viewCounter"];
-            $sql = "UPDATE tblposts SET viewCounter = $visits+1 WHERE id ='$postid'";
-    $conn->query($sql);
-
+        if ($stmt->execute()) {
+            echo "<script>alert('Comment successfully submitted. Comment will be displayed after admin review.');</script>";
+            unset($_SESSION['token']);
+        } else {
+            echo "<script>alert('Something went wrong. Please try again.');</script>";
         }
-    } else {
-        echo "no results";
+
+        $stmt->close();
     }
-    
+}
 
+// View Counter Update
+$postid = intval($_GET['nid']);
+$stmt = $conn->prepare("SELECT viewCounter FROM tblposts WHERE id = ?");
+$stmt->bind_param("i", $postid);
+$stmt->execute();
+$result = $stmt->get_result();
 
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $visits = $row["viewCounter"];
+    $visits++;
+
+    $update = $conn->prepare("UPDATE tblposts SET viewCounter = ? WHERE id = ?");
+    $update->bind_param("ii", $visits, $postid);
+    $update->execute();
+    $update->close();
+} else {
+    echo "no results";
+}
+$stmt->close();
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -90,62 +100,7 @@ $postid=intval($_GET['nid']);
     <div class="site-mobile-menu-body"></div>
   </div>
 
-  <!-- <nav class="site-nav">
-    <div class="container">
-      <div class="menu-bg-wrap">
-        <div class="site-navigation">
-          <div class="row g-0 align-items-center">
-            <div class="col-2">
-              <a href="index.html" class="logo m-0 float-start">Blogy<span class="text-primary">.</span></a>
-            </div>
-            <div class="col-8 text-center">
-              <form action="#" class="search-form d-inline-block d-lg-none">
-                <input type="text" class="form-control" placeholder="Search...">
-                <span class="bi-search"></span>
-              </form>
-
-              <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
-                <li><a href="index.html">Home</a></li>
-                <li class="has-children active">
-                  <a href="category.html">Pages</a>
-                  <ul class="dropdown">
-                    <li><a href="search-result.html">Search Result</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li class="active"><a href="single.html">Blog Single</a></li>
-                    <li><a href="category.html">Category</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="#">Menu One</a></li>
-                    <li><a href="#">Menu Two</a></li>
-                    <li class="has-children">
-                      <a href="#">Dropdown</a>
-                      <ul class="dropdown">
-                        <li><a href="#">Sub Menu One</a></li>
-                        <li><a href="#">Sub Menu Two</a></li>
-                        <li><a href="#">Sub Menu Three</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="category.html">Culture</a></li>
-                <li><a href="category.html">Business</a></li>
-                <li><a href="category.html">Politics</a></li>
-              </ul>
-            </div>
-            <div class="col-2 text-end">
-              <a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
-                <span></span>
-              </a>
-              <form action="#" class="search-form d-none d-lg-inline-block">
-                <input type="text" class="form-control" placeholder="Search...">
-                <span class="bi-search"></span>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav> -->
+  
   <div class="container-fluid">
     <?php include 'nav.php'; ?>
 
