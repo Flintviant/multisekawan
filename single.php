@@ -128,6 +128,7 @@ $stmt->close();
           tblposts.PostDetails AS postdetails,
           tblposts.PostingDate AS postingdate,
           tblposts.PostUrl AS url,
+          tblposts.viewCounter,
           tblposts.postedBy,
           tblposts.lastUpdatedBy,
           tblposts.UpdationDate
@@ -153,6 +154,8 @@ $stmt->close();
                               <figure class="author-figure mb-0 me-3 d-inline-block"><i class="bi bi-person"></i></figure>
                               <span class="d-inline-block mt-1">By <?php echo htmlentities($row['postedBy']); ?></span>
                               <span>&nbsp;-&nbsp; <?php echo htmlentities(date('d-m-Y', strtotime($row['postingdate']))); ?></span>
+                              <br>
+                              <strong>Views: </strong> <?= $row['viewCounter']; ?>
                           </div>
                       </div>
                   </div>

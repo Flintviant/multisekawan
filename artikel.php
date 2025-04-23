@@ -75,7 +75,7 @@ include('config.php');
 	            $offset = ($pageno - 1) * $no_of_records_per_page;
 
 	            // Database connection
-	            $conn = new mysqli("localhost", "u608883328_sekaone", "Sekaone_0423", "u608883328_sekaone");
+	            $conn = new mysqli("localhost", "root", "", "sekaone");
 
 	            // Check connection
 	            if ($conn->connect_error) {
@@ -115,7 +115,7 @@ include('config.php');
 	            while ($row = $result->fetch_assoc()) {
 	                ?>
 	                <div class="col-md-4 mb-4">
-	                    <a href="single.php?nid=<?php echo intval($row['pid']); ?>" class="h-entry v-height gradient">
+	                    <a href="single.php?nid=<?= $row['pid']; ?>" class="h-entry v-height gradient">
 	                        <div class="featured-img" style="background-image: url('newsportal/admin/postimages/<?php echo htmlentities($row['PostImage']); ?>');"></div>
 	                        <div class="text">
 	                            <span class="date"><?php echo htmlentities(date('M. d, Y', strtotime($row['postingdate']))); ?></span>
