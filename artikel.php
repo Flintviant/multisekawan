@@ -60,6 +60,63 @@ include('config.php');
 		<div class="site-mobile-menu-body"></div>
 	</div>
 
+	<!-- <nav class="site-nav">
+		<div class="container">
+			<div class="menu-bg-wrap">
+				<div class="site-navigation">
+					<div class="row g-0 align-items-center">
+						<div class="col-2">
+							<a href="index.html" class="logo m-0 float-start">Blogy<span class="text-primary">.</span></a>
+						</div>
+						<div class="col-8 text-center">
+							<form action="#" class="search-form d-inline-block d-lg-none">
+								<input type="text" class="form-control" placeholder="Search...">
+								<span class="bi-search"></span>
+							</form>
+
+							<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
+								<li class="active"><a href="index.html">Home</a></li>
+								<li class="has-children">
+									<a href="category.html">Pages</a>
+									<ul class="dropdown">
+										<li><a href="search-result.html">Search Result</a></li>
+										<li><a href="blog.html">Blog</a></li>
+										<li><a href="single.php">Blog Single</a></li>
+										<li><a href="category.html">Category</a></li>
+										<li><a href="about.html">About</a></li>
+										<li><a href="contact.html">Contact Us</a></li>
+										<li><a href="#">Menu One</a></li>
+										<li><a href="#">Menu Two</a></li>
+										<li class="has-children">
+											<a href="#">Dropdown</a>
+											<ul class="dropdown">
+												<li><a href="#">Sub Menu One</a></li>
+												<li><a href="#">Sub Menu Two</a></li>
+												<li><a href="#">Sub Menu Three</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li><a href="category.html">Culture</a></li>
+								<li><a href="category.html">Business</a></li>
+								<li><a href="category.html">Politics</a></li>
+							</ul>
+						</div>
+						<div class="col-2 text-end">
+							<a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
+								<span></span>
+							</a>
+							<form action="#" class="search-form d-none d-lg-inline-block">
+								<input type="text" class="form-control" placeholder="Search...">
+								<span class="bi-search"></span>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav> -->
+
 	<?php include 'nav.php'; ?>
 
 	<!-- Start retroy layout blog posts -->
@@ -68,54 +125,63 @@ include('config.php');
 	    <div class="container">
 	        <div class="row align-items-stretch retro-layout">
 	            <?php
-	            // Get current page number, default to 1
-	            $pageno = isset($_GET['pageno']) && is_numeric($_GET['pageno']) ? intval($_GET['pageno']) : 1;
+	            // Get the current page number
+	            if (isset($_GET['pageno'])) {
+	                $pageno = $_GET['pageno'];
+	            } else {
+	                $pageno = 1;
+	            }
 
 	            $no_of_records_per_page = 8;
 	            $offset = ($pageno - 1) * $no_of_records_per_page;
 
 	            // Database connection
-	            $conn = new mysqli("localhost", "root", "", "sekaone");
+	            $conn = new mysqli("localhost", "u608883328_sekaone", "Sekaone_0423", "u608883328_sekaone");
 
 	            // Check connection
 	            if ($conn->connect_error) {
 	                die("Connection failed: " . $conn->connect_error);
 	            }
 
-	            // Get total number of records
-	            $result = $conn->query("SELECT COUNT(*) FROM tblposts WHERE Is_Active = 1");
+	            // Total pages calculation
+	            $total_pages_sql = "SELECT COUNT(*) FROM tblposts";
+	            $result = $conn->query($total_pages_sql);
 	            $total_rows = $result->fetch_array()[0];
 	            $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-	            // Fetch paginated posts
-	            $query = $conn->prepare("
-	                SELECT 
-	                    tblposts.id AS pid,
-	                    tblposts.PostTitle AS posttitle,
+	            // Fetch posts
+	            $query = $conn->prepare(
+	                "SELECT 
+	                    tblposts.id as pid,
+	                    tblposts.PostTitle as posttitle,
 	                    tblposts.PostImage,
-	                    tblcategory.CategoryName AS category,
-	                    tblcategory.id AS cid,
-	                    tblsubcategory.Subcategory AS subcategory,
-	                    tblposts.PostDetails AS postdetails,
-	                    tblposts.PostingDate AS postingdate,
-	                    tblposts.PostUrl AS url 
+	                    tblcategory.CategoryName as category,
+	                    tblcategory.id as cid,
+	                    tblsubcategory.Subcategory as subcategory,
+	                    tblposts.PostDetails as postdetails,
+	                    tblposts.PostingDate as postingdate,
+	                    tblposts.PostUrl as url 
 	                FROM 
 	                    tblposts 
-	                LEFT JOIN tblcategory ON tblcategory.id = tblposts.CategoryId 
-	                LEFT JOIN tblsubcategory ON tblsubcategory.SubCategoryId = tblposts.SubCategoryId 
-	                WHERE tblposts.Is_Active = 1 
-	                ORDER BY tblposts.id DESC 
-	                LIMIT ?, ?
-	            ");
+	                LEFT JOIN 
+	                    tblcategory ON tblcategory.id = tblposts.CategoryId 
+	                LEFT JOIN 
+	                    tblsubcategory ON tblsubcategory.SubCategoryId = tblposts.SubCategoryId 
+	                WHERE 
+	                    tblposts.Is_Active = 1 
+	                ORDER BY 
+	                    tblposts.id DESC 
+	                LIMIT ?, ?"
+	            );
 	            $query->bind_param("ii", $offset, $no_of_records_per_page);
 	            $query->execute();
 	            $result = $query->get_result();
 
-	            // Display each post
+	            // Display posts
 	            while ($row = $result->fetch_assoc()) {
 	                ?>
 	                <div class="col-md-4 mb-4">
-	                    <a href="single.php?nid=<?= $row['pid']; ?>" class="h-entry v-height gradient">
+	                    <a href="single.php?nid=<?php echo htmlentities($row['pid']); ?>" class="h-entry v-height gradient">
 	                        <div class="featured-img" style="background-image: url('newsportal/admin/postimages/<?php echo htmlentities($row['PostImage']); ?>');"></div>
 	                        <div class="text">
 	                            <span class="date"><?php echo htmlentities(date('M. d, Y', strtotime($row['postingdate']))); ?></span>
