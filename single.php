@@ -102,33 +102,15 @@ $stmt->close();
 
   
   <div class="container-fluid">
-      <?php include 'nav.php'; ?>
-
       <?php
-      // Validasi dan sanitasi input
-      $pid = isset($_GET['nid']) ? intval($_GET['nid']) : 0;
-      $currenturl = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+include 'nav.php';
 
-      // Ambil data postingan
-      $query = mysqli_query($conn, "SELECT 
-          tblposts.PostTitle AS posttitle,
-          tblposts.PostImage,
-          tblcategory.CategoryName AS category,
-          tblcategory.id AS cid,
-          tblsubcategory.Subcategory AS subcategory,
-          tblposts.PostDetails AS postdetails,
-          tblposts.PostingDate AS postingdate,
-          tblposts.PostUrl AS url,
-          tblposts.postedBy,
-          tblposts.lastUpdatedBy,
-          tblposts.UpdationDate
-          FROM tblposts 
-          LEFT JOIN tblcategory ON tblcategory.id = tblposts.CategoryId 
-          LEFT JOIN tblsubcategory ON tblsubcategory.SubCategoryId = tblposts.SubCategoryId 
-          WHERE tblposts.id = '$pid'");
+if (isset($_GET['nid']) && is_numeric($_GET['nid']) && $_GET['nid'] > 0) {
+    $pid = intval($_GET['nid']);
+    $query = mysqli_query($conn, "SELECT tblposts.PostTitle as posttitle, tblposts.PostImage, tblcategory.CategoryName as category, tblcategory.id as cid, tblsubcategory.Subcategory as subcategory, tblposts.PostDetails as postdetails, tblposts.PostingDate as postingdate, tblposts.PostUrl as url, tblposts.postedBy, tblposts.lastUpdatedBy, tblposts.UpdationDate FROM tblposts LEFT JOIN tblcategory ON tblcategory.id=tblposts.CategoryId LEFT JOIN tblsubcategory ON tblsubcategory.SubCategoryId=tblposts.SubCategoryId WHERE tblposts.id='$pid'");
 
-      if ($query && mysqli_num_rows($query) > 0) {
-          while ($row = mysqli_fetch_array($query)) {
+    if ($query && mysqli_num_rows($query) > 0) {
+        while ($row = mysqli_fetch_array($query)) {
       ?>
 
       <!-- HERO SECTION -->
