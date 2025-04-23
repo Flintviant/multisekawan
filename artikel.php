@@ -122,82 +122,74 @@ include('config.php');
 	<!-- Start retroy layout blog posts -->
 	
 	<section class="section bg-light">
-	    <div class="container">
-	        <div class="row align-items-stretch retro-layout">
-	            <?php
-	            // Get the current page number
-	            if (isset($_GET['pageno'])) {
-	                $pageno = $_GET['pageno'];
-	            } else {
-	                $pageno = 1;
-	            }
+    <div class="container">
+        <div class="row align-items-stretch retro-layout">
+            <?php
+            // Get current page number, default to 1
+            $pageno = isset($_GET['pageno']) && is_numeric($_GET['pageno']) ? intval($_GET['pageno']) : 1;
 
-	            $no_of_records_per_page = 8;
-	            $offset = ($pageno - 1) * $no_of_records_per_page;
+            $no_of_records_per_page = 8;
+            $offset = ($pageno - 1) * $no_of_records_per_page;
 
-	            // Database connection
-	            $conn = new mysqli("localhost", "u608883328_sekaone", "Sekaone_0423", "u608883328_sekaone");
+            // Database connection
+            $conn = new mysqli("localhost", "u608883328_sekaone", "Sekaone_0423", "u608883328_sekaone");
 
-	            // Check connection
-	            if ($conn->connect_error) {
-	                die("Connection failed: " . $conn->connect_error);
-	            }
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
 
-	            // Total pages calculation
-	            $total_pages_sql = "SELECT COUNT(*) FROM tblposts";
-	            $result = $conn->query($total_pages_sql);
-	            $total_rows = $result->fetch_array()[0];
-	            $total_pages = ceil($total_rows / $no_of_records_per_page);
+            // Get total number of records
+            $result = $conn->query("SELECT COUNT(*) FROM tblposts WHERE Is_Active = 1");
+            $total_rows = $result->fetch_array()[0];
+            $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-	            // Fetch posts
-	            $query = $conn->prepare(
-	                "SELECT 
-	                    tblposts.id as pid,
-	                    tblposts.PostTitle as posttitle,
-	                    tblposts.PostImage,
-	                    tblcategory.CategoryName as category,
-	                    tblcategory.id as cid,
-	                    tblsubcategory.Subcategory as subcategory,
-	                    tblposts.PostDetails as postdetails,
-	                    tblposts.PostingDate as postingdate,
-	                    tblposts.PostUrl as url 
-	                FROM 
-	                    tblposts 
-	                LEFT JOIN 
-	                    tblcategory ON tblcategory.id = tblposts.CategoryId 
-	                LEFT JOIN 
-	                    tblsubcategory ON tblsubcategory.SubCategoryId = tblposts.SubCategoryId 
-	                WHERE 
-	                    tblposts.Is_Active = 1 
-	                ORDER BY 
-	                    tblposts.id DESC 
-	                LIMIT ?, ?"
-	            );
-	            $query->bind_param("ii", $offset, $no_of_records_per_page);
-	            $query->execute();
-	            $result = $query->get_result();
+            // Fetch paginated posts
+            $query = $conn->prepare("
+                SELECT 
+                    tblposts.id AS pid,
+                    tblposts.PostTitle AS posttitle,
+                    tblposts.PostImage,
+                    tblcategory.CategoryName AS category,
+                    tblcategory.id AS cid,
+                    tblsubcategory.Subcategory AS subcategory,
+                    tblposts.PostDetails AS postdetails,
+                    tblposts.PostingDate AS postingdate,
+                    tblposts.PostUrl AS url 
+                FROM 
+                    tblposts 
+                LEFT JOIN tblcategory ON tblcategory.id = tblposts.CategoryId 
+                LEFT JOIN tblsubcategory ON tblsubcategory.SubCategoryId = tblposts.SubCategoryId 
+                WHERE tblposts.Is_Active = 1 
+                ORDER BY tblposts.id DESC 
+                LIMIT ?, ?
+            ");
+            $query->bind_param("ii", $offset, $no_of_records_per_page);
+            $query->execute();
+            $result = $query->get_result();
 
-	            // Display posts
-	            while ($row = $result->fetch_assoc()) {
-	                ?>
-	                <div class="col-md-4 mb-4">
-	                    <a href="single.php?nid=<?php echo htmlentities($row['id']); ?>" class="h-entry v-height gradient">
-	                        <div class="featured-img" style="background-image: url('newsportal/admin/postimages/<?php echo htmlentities($row['PostImage']); ?>');"></div>
-	                        <div class="text">
-	                            <span class="date"><?php echo htmlentities(date('M. d, Y', strtotime($row['postingdate']))); ?></span>
-	                            <h2><?php echo htmlentities($row['posttitle']); ?></h2>
-	                        </div>
-	                    </a>
-	                </div>
-	                <?php
-	            }
+            // Display each post
+            while ($row = $result->fetch_assoc()) {
+                ?>
+                <div class="col-md-4 mb-4">
+                    <a href="single.php?nid=<?php echo intval($row['pid']); ?>" class="h-entry v-height gradient">
+                        <div class="featured-img" style="background-image: url('newsportal/admin/postimages/<?php echo htmlentities($row['PostImage']); ?>');"></div>
+                        <div class="text">
+                            <span class="date"><?php echo htmlentities(date('M. d, Y', strtotime($row['postingdate']))); ?></span>
+                            <h2><?php echo htmlentities($row['posttitle']); ?></h2>
+                        </div>
+                    </a>
+                </div>
+                <?php
+            }
 
-	            // Close connection
-	            $conn->close();
-	            ?>
-	        </div>
-	    </div>
-	</section>
+            // Close connection
+            $conn->close();
+            ?>
+        </div>
+    </div>
+</section>
+
 
 	<!-- End retroy layout blog posts -->
 
