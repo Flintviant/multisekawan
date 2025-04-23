@@ -10571,3 +10571,15 @@ textarea {
       margin-right: 0px; }
       .custom-navbar .custom-navbar-cta li:first-child {
         margin-right: 20px; }
+
+.breadcrumb {
+  font-size: 14px;
+  background-color: #f8f9fa;
+}
+.breadcrumb a {
+  color: #007bff;
+  text-decoration: none;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  content: ">";
+}
