@@ -104,13 +104,6 @@ $stmt->close();
   <div class="container-fluid">
     <?php include 'nav.php'; ?>
 
-    <?php
-    $pid=intval($_GET['nid']);
-    $currenturl="https://".$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];;
-     $query=mysqli_query($conn,"SELECT tblposts.PostTitle as posttitle,tblposts.PostImage,tblcategory.CategoryName as category,tblcategory.id as cid,tblsubcategory.Subcategory as subcategory,tblposts.PostDetails as postdetails,tblposts.PostingDate as postingdate,tblposts.PostUrl as url,tblposts.postedBy,tblposts.lastUpdatedBy,tblposts.UpdationDate from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on  tblsubcategory.SubCategoryId=tblposts.SubCategoryId where tblposts.id='$pid'");
-    while ($row=mysqli_fetch_array($query)) {
-    ?>
-
     <div 
          class="site-cover site-cover-sm same-height overlay single-page"
          style="background-image: url('newsportal/admin/postimages/<?php echo htmlentities($row['PostImage']);?>');" alt="<?php echo htmlentities($row['posttitle']);?>"
