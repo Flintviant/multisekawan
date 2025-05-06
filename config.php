@@ -19,7 +19,7 @@
   }
   
   // SQL QUERY
-  $query = "SELECT * FROM tblposts";
+  $query = "SELECT * FROM tblposts LIMIT 4";
   
   // FETCHING DATA FROM DATABASE
   $result = $conn->query($query);
