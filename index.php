@@ -300,10 +300,17 @@
 					<p style="text-align: left;">
 						Follow and read our articles to find out about rattan cane webbing and others.
 					</p>
+					<a 
+						href="<?=$defaulturl?>services.php?service" 
+						type="button" class="btn btn-custom" 
+						style="background-color:#826f5f;"
+					>		
+						Products
+					</a>
 				</div>
 				<div class="row col-lg-8 mb-5 mb-lg-0">
 					<?php foreach ($blog as $blog) { ?>
-						<div class="col-6">
+						<div class="col-6 mb-5">
 							<div class="card">
 								<div class="card-body text-center">
 									<a href="">
