@@ -111,3 +111,88 @@
 		<script src="<?=$defaulturl?>js/main.js"></script>
 		<script src="<?=$defaulturl?>js/owl.caraousel.min.js"></script>
 		<script src="<?=$defaulturl?>js/aos.js"></script>
+
+		<script type="application/ld+json">
+			{
+			  "@context": "https://schema.org",
+			  "@type": "Organization",
+			  "name": "Sekaone",
+			  "url": "https://sekaone.com",
+			  "logo": "https://sekaone.com/assets/logotanpateks.webp",
+			  "sameAs": [
+			    "https://www.instagram.com/sekaone",
+			    "https://www.linkedin.com/company/sekaone",
+			    "https://www.facebook.com/sekaone"
+			  ],
+			  "description": "Sekaone is a premium manufacturer and exporter of handcrafted rattan webbing and sustainable rattan furniture from Indonesia.",
+			  "contactPoint": [{
+			    "@type": "ContactPoint",
+			    "telephone": "+62 8129-2314-213",
+			    "contactType": "Marketing",
+			    "areaServed": "Worldwide",
+			    "availableLanguage": ["English", "Indonesian", "Japanese", "Arabic"]
+			  }]
+			}
+		</script>
+
+		<script type="application/ld+json">
+			{
+			  "@context": "https://schema.org",
+			  "@type": "Product",
+			  "name": "Rattan Cane Webbing",
+			  "image": "https://sekaone.com/assets/rattan-cane-webbing.jpg",
+			  "description": "High-quality, handcrafted rattan cane webbing made from sustainable natural rattan.",
+			  "sku": "RW-001",
+			  "brand": {
+			    "@type": "Brand",
+			    "name": "Sekaone"
+			  },
+			  // "offers": {
+			  //   "@type": "Offer",
+			  //   "priceCurrency": "USD",
+			  //   "price": "50.00",
+			  //   "itemCondition": "https://schema.org/NewCondition",
+			  //   "availability": "https://schema.org/InStock",
+			  //   "url": "https://sekaone.com/product/rattan-cane-webbing"
+			  // }
+			}
+		</script>
+
+		<script type="application/ld+json">
+			{
+			  "@context": "https://schema.org",
+			  "@type": "BreadcrumbList",
+			  "itemListElement": [
+			    {
+			      "@type": "ListItem",
+			      "position": 1,
+			      "name": "Home",
+			      "item": "https://sekaone.com"
+			    },
+			    {
+			      "@type": "ListItem",
+			      "position": 2,
+			      "name": "About Us",
+			      "item": "https://sekaone.com/about.php?about"
+			    },
+			    {
+			      "@type": "ListItem",
+			      "position": 3,
+			      "name": "Product",
+			      "item": "https://sekaone.com/services.php?services"
+			    },
+			    {
+			      "@type": "ListItem",
+			      "position": 4,
+			      "name": "Artikel",
+			      "item": "https://sekaone.com/artikel.php?artikel"
+			    },
+			    {
+			      "@type": "ListItem",
+			      "position": 5,
+			      "name": "Contact Us",
+			      "item": "https://sekaone.com/contact.php?contact"
+			    }
+			  ]
+			}
+		</script>
