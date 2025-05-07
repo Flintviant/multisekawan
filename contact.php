@@ -50,7 +50,7 @@
                       </svg>
                     </div> <!-- /.icon -->
                     <div class="service-contents">
-                      <h6>gabril@multisekawan.com</h6>
+                      <h6>gabril@sekaone.com</h6>
                     </div> <!-- /.service-contents-->
                   </div> <!-- /.service -->
                 </div>
