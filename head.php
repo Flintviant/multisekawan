@@ -7,7 +7,7 @@
 
   <title>
     <?php
-      if (isset($_GET["home"])) echo "Sekaone - Home";
+      if (isset($_GET["home"])) echo "Premium Rattan Webbing & Furniture Supplier - Sekaone | Home";
       elseif (isset($_GET["about"])) echo "Sekaone - About Us";
       elseif (isset($_GET["services"])) echo "Sekaone - Services";
       elseif (isset($_GET["artikel"])) echo "Sekaone - Artikel";
