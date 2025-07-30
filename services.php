@@ -10,6 +10,113 @@
 
 	<?php include 'head.php'; ?>
 
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+	  .section-container {
+	    padding: 4rem 1rem;
+	    background-color: #f8f9fa;
+	  }
+
+	  .content-wrapper {
+	    background: #fff;
+	    border-radius: 16px;
+	    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+	    padding: 2rem;
+	  }
+
+	  .section-title {
+	    color: #2e7d32;
+	    font-weight: 700;
+	  }
+
+	  .section-text {
+	    color: #444;
+	    line-height: 1.7;
+	  }
+
+	  .section-image {
+	    width: 100%;
+	    border-radius: 12px;
+	    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	    object-fit: cover;
+	  }
+
+	  .product-img {
+	    width: 100%;
+	    max-width: 450px;
+	    border-radius: 12px;
+	    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+	  }
+
+	  .product-info h4, .product-info h3 {
+	    color: #2e7d32;
+	    font-weight: 600;
+	  }
+
+	  .product-info p {
+	    color: #555;
+	    line-height: 1.6;
+	    font-size: 1rem;
+	  }
+
+	  hr {
+	    border-top: 1px solid #ccc;
+	  }
+
+	  .product-row {
+  max-width: 1200px;
+  margin: 0 auto 4rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.product-image,
+.product-info {
+  flex: 1 1 45%;
+  text-align: center;
+}
+
+.product-image img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  color: seagreen;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.product-info p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .product-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .product-image, .product-info {
+    flex: 1 1 100%;
+  }
+
+  .product-image img {
+    max-width: 90%;
+  }
+}
+
+
+	</style>
+
 	<body>
 
 		<?php include 'nav.php' ?>
@@ -20,7 +127,7 @@
 		<div class="why-choose-section">
 			<div class="container-fluid">
 				
-				<div class="row mb-5">
+				<!-- <div class="row mb-5">
 					<div class="col-12 col-md-12 col-lg-12 mb-5 mb-md-0">
 						<h2 class="mb-4" style="color:seagreen;"><b>Rattan Cane Webbing</b></h2>
 						<h6 class="mb-4 col-10">
@@ -28,9 +135,25 @@
 						</h6>
 					</div>
 					<img src="assets/cover.png" style="max-width: 97%;" class="container-fluid">
+				</div> -->
+
+				<div class="container-fluid section-container mb-5">
+					<div class="row align-items-center content-wrapper">
+					    <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+					      <h2 class="section-title mb-3">Rattan Cane Webbing</h2>
+					      <p class="section-text">
+					        Our rattan webbing products are made from the best rattan in Indonesia. We have an experienced team and have exported to several countries in America, Europa and Asia.<br><br>
+					        Rattan webbing is often used in cabinet furniture, cupboards, chairs, decorations, partitions, etc.<br><br>
+					        Available in color Natural and Bleached, from size 35 cm until 100 cm.
+					      </p>
+					    </div>
+					    <div class="col-12 col-lg-6">
+					      <img src="assets/cover.png" alt="Rattan Webbing" class="section-image">
+					    </div>
+					</div>
 				</div>
 
-				<div class="row mb-5">
+				<!-- <div class="row mb-5">
 					<div class="col-12 col-md-6 col-lg-6 mb-md-0">
 						<img src="assets/produk/open.png" title="rattan" style="width: 70%;">
 					</div>
@@ -44,22 +167,38 @@
 							Quality 	: Grade A & Grade B
 						</h6>
 					</div>
+				</div> -->
+
+				<div class="product-row container-fluid">
+				  	<div class="product-image container-fluid">
+				    	<img src="assets/produk/open.png" alt="Open Hexagonal Rattan Webbing">
+				  	</div>
+				  	<div class="product-info">
+				    	<h3 class="section-title">Open Hexagonal Rattan Webbing</h3>
+				    	<p>
+				      		<strong>Color:</strong> Natural or Bleach<br>
+				      		<strong>Size:</strong> 35 cm until 100 cm x 15 m (14 Inch - 40 Inch)<br>
+				      		<strong>Peel size:</strong> 2.5 mm<br>
+				      		<strong>Quality:</strong> Grade A & Grade B
+				    	</p>
+				  	</div>
 				</div>
+
 
 				<hr class="mb-5">
 
-				<div class="row mb-5">
-					<div class="col-12 col-md-6 col-lg-6 mb-md-0 text-center">
-						<h3 class="section-title mb-3" style="color:seagreen;">Square Rattan Webbing</h3>
-						<h6>
-							Color : Natural or Bleach <br>
-							Size : 35 cm until 100 cm x 15 m <br>
+				<div class="product-row container-fluid">
+					<div class="product-info container-fluid">
+						<h3 class="section-title">Square Rattan Webbing</h3>
+						<p>
+							<strong>Color :</strong> Natural or Bleach <br>
+							<strong>Size :</strong> 35 cm until 100 cm x 15 m <br>
 							(14 Inch - 40 Inch) <br>
-							Peel size : 2 mm <br>
-							Quality : Grade A & Grade B
-						</h6>
+							<strong>Peel size :</strong> 2 mm <br>
+							<strong>Quality :</strong> Grade A & Grade B
+						</p>
 					</div>
-					<div class="col-12 col-md-6 col-lg-6 mb-md-0">
+					<div class="product-image">
 						<img src="assets/produk/square.png" title="rattan webbing" style="width: 80%;">
 					</div>
 				</div>
